@@ -21,11 +21,11 @@ import {
     ADD_TO_CART_BTN_SELECTOR,
     ERROR_MESSAGE_CLASS,
     ERROR_MESSAGES
-} from '../shopConstants.js';
+} from '../constants/shopConstants.js';
 
 
 export function loadAndRenderProducts() {
-    fetch('products.json')
+    fetch('../data/products.json')
         .then(response => {
             if (!response.ok) throw new Error(ERROR_MESSAGES.NETWORK_ERROR);
             return response.json();
@@ -101,7 +101,8 @@ function createProductItem(product) {
     setupQuantityButtons(gridItem);
     
     gridItem.querySelector(ADD_TO_CART_BTN_SELECTOR).addEventListener('click', () => {
-        const quantity = parseInt(gridItem.querySelector(QUANTITY_INPUT_SELECTOR).value);
+        let quantity = parseInt(gridItem.querySelector(QUANTITY_INPUT_SELECTOR).value);
+        if (quantity < 1) quantity = 1;
         addToCart(product, quantity);
     });
 

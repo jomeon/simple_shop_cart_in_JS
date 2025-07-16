@@ -28,7 +28,7 @@ import {    RIGHT_COLUMN_CLASS,
     QUANTITY_MINUS_SELECTOR,
     REMOVE_ITEM_SELECTOR,
     translations,
-    CART_FOOTER_SELECTOR} from "/cartConstants.js"
+    CART_FOOTER_SELECTOR} from "../constants/cartConstants.js"
 
 import { saveCartToStorage,loadCartFromStorage} from "./localStorage.js";
 
